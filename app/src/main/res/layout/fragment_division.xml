@@ -1,0 +1,91 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000"
+    tools:context="com.nub.tourmate.MyActivity.DivisionFragment">
+
+    <android.support.v7.widget.CardView
+
+        android:id="@+id/cardViewDhaka"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:padding="10dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="0dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/custom_design"
+            android:orientation="vertical">
+
+            <ImageView
+
+                android:id="@+id/imageView"
+                android:layout_width="160dp"
+                android:layout_height="120dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/dhaka_city" />
+
+            <TextView
+                android:layout_width="66dp"
+                android:layout_height="22dp"
+                android:layout_below="@+id/imageView"
+                android:layout_marginStart="50dp"
+                android:layout_marginTop="-24dp"
+                android:text="Dhaka"
+                android:textAllCaps="false"
+                android:textColor="  #e0f5ff"
+                android:textSize="20dp" />
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+
+        android:id="@+id/cardViewKhulna"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_marginTop="20dp"
+        android:padding="10dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="0dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/custom_design"
+            android:orientation="vertical">
+
+            <ImageView
+
+                android:id="@+id/khulnaImageView"
+                android:layout_width="160dp"
+                android:layout_height="120dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/khulna_city" />
+
+            <TextView
+                android:layout_width="66dp"
+                android:layout_height="22dp"
+                android:layout_below="@+id/khulnaImageView"
+                android:layout_marginStart="50dp"
+                android:layout_marginTop="-24dp"
+                android:text="Khulna"
+                android:textAllCaps="false"
+                android:textColor="  #e0f5ff"
+                android:textSize="20dp" />
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
+
+</LinearLayout>
