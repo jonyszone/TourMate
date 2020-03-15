@@ -65,7 +65,7 @@
         android:textAllCaps="false"
         android:text="Upload"
         android:layout_marginTop="15dp"
-        android:background="@drawable/mybutton"
+        android:background="@drawable/gradient_background"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 

@@ -10,7 +10,7 @@
         android:id="@+id/linlayID"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/mainColor"
+        android:background="@color/blue1"
         android:orientation="vertical">
 
 

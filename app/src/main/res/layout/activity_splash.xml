@@ -5,17 +5,41 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/gradient_background"
+    android:gravity="center"
+    android:orientation="vertical"
     tools:context="com.nub.tourmate.Activity.splashActivity">
 
-    <TextView
-        android:gravity="center"
+
+    <ImageView
+        android:layout_width="155dp"
+        android:layout_height="131dp"
         android:layout_gravity="center"
-        android:text="Tour mate"
-        android:fontFamily="@font/fff_tusj"
-        android:textStyle="italic"
-        android:textSize="50sp"
-        android:textColor="@color/white"
+        android:src="@drawable/logo">
+
+    </ImageView>
+
+    <TextView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:text="Travel with"
+        android:textColor="#530303"
+        android:layout_gravity="center"
+        android:fontFamily="@font/itikaf_font"
+        android:gravity="center"
+        android:textSize="30sp"
+        >
+
+    </TextView>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:fontFamily="@font/itikaf_font"
+        android:gravity="center"
+        android:text="Tour mate"
+        android:textColor="#000000"
+        android:textSize="60sp"
+        android:textStyle="italic" />
 
 </LinearLayout>

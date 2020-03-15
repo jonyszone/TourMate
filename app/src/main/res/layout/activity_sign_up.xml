@@ -17,7 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="0.6"
-            android:background="@color/cardColor"
+            android:background="@drawable/gradient_background"
             android:orientation="horizontal"/>
 
         <LinearLayout
@@ -164,6 +164,7 @@
 
             <Button
                 android:textColor="@color/white"
+                android:textStyle="bold"
                 android:id="@+id/SignUpbtnId"
                 android:padding="10dp"
                 android:layout_width="match_parent"
@@ -172,7 +173,7 @@
                 android:layout_marginTop="15dp"
                 android:layout_marginRight="30dp"
                 android:layout_marginBottom="15dp"
-                android:background="@drawable/mybutton"
+                android:background="@drawable/gradient_background"
                 android:text="Sign Up"
                 android:textAllCaps="false" />
 

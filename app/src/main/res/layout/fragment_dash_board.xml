@@ -199,7 +199,7 @@
                 android:id="@+id/linlayID"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/mainColor"
+                android:background="@color/blue1"
                 android:orientation="vertical"
                 android:padding="5dp">
 
@@ -270,7 +270,7 @@
             android:layout_marginRight="30dp"
             android:layout_marginBottom="20dp"
             android:layout_marginTop="50dp"
-            android:backgroundTint="@color/mainColor"
+            android:backgroundTint="@color/colorAccent"
             android:src="@drawable/plusicon"
             android:tint="@color/white" />
 

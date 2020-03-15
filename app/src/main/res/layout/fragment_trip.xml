@@ -20,7 +20,7 @@
 
 
         <RelativeLayout
-            android:background="@color/mainColor"
+            android:background="@color/blue1"
             android:id="@+id/relativelayout1"
             android:orientation="horizontal"
             android:layout_width="match_parent"
