@@ -13,7 +13,7 @@
 
         <LinearLayout
             android:id="@+id/viewA"
-            android:layout_width="match_parent"
+            android:layout_width="498dp"
             android:layout_height="match_parent"
             android:layout_weight="0.6"
             android:background="@drawable/gradient_background"
@@ -42,7 +42,7 @@
         <LinearLayout
 
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="400dp"
             android:gravity="center"
             android:orientation="vertical">
 
@@ -57,8 +57,7 @@
                 android:gravity="center"
                 android:text="Tour Mate"
                 android:textColor="#000"
-                android:textSize="50sp"
-                android:textStyle="italic" />
+                android:textSize="30sp" />
 
 
             <android.support.design.widget.TextInputLayout
