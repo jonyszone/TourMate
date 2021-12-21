@@ -5,9 +5,10 @@ Let's visualize the full structure of the application.
 
 # 📝 Introduction
 
-TourMate is an Android application that is like an assistant for a roamer. Here in this application included some features like users can easily find suggested places. It will also show them the nearby important places.[Suggested Edits](https://docs.readme.com/docs/suggested-edits)** feature on every page. It's like GitHub Pull Requests, but for text!
+TourMate is an Android application that is like an assistant for a roamer. Here in this application included some features like users can easily find suggested places. It will also show them the nearby important places.
 
-Want to ease your users into it with some fancy marketing pages? You can enable a **[Landing Page](https://docs.readme.com/docs/landing-page)**
+Want to ease your users into it with some fancy marketing pages?
+Knock me at jonyszone@gmail.com
 
 # 📈 User Experience
 
