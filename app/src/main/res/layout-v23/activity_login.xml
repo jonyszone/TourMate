@@ -13,7 +13,7 @@
 
         <LinearLayout
             android:id="@+id/viewA"
-            android:layout_width="498dp"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="0.6"
             android:background="@drawable/gradient_background"
@@ -79,8 +79,7 @@
                     android:inputType="textEmailAddress"
                     android:singleLine="true"
                     android:autofillHints=""
-                    tools:ignore="HardcodedText"
-                    tools:targetApi="m" />
+                    tools:ignore="HardcodedText" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -92,19 +91,6 @@
                 android:layout_marginRight="10dp"
                 android:theme="@style/AppTheme.NoActionBar">
 
-                <EditText
-                    android:id="@+id/signInPasswordEtId"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:drawableStart="@drawable/lock"
-                    android:drawableTint="@color/mainColor"
-                    android:hint="@string/password"
-                    android:imeOptions="actionDone"
-                    android:inputType="textPassword"
-                    android:singleLine="true"
-                    android:textColorHighlight="@color/white"
-                    tools:targetApi="m"
-                    android:importantForAutofill="no" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <Button
@@ -115,7 +101,7 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginRight="30dp"
                 android:background="@drawable/gradient_background"
-                android:text="@string/sign_in"
+                android:text="@string/signin"
                 android:textAllCaps="false"
                 android:textColor="@color/white" />
 
@@ -125,7 +111,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
                 android:layout_marginTop="5dp"
-                android:layout_marginEnd="5dp"
+                android:layout_marginRight="5dp"
                 android:padding="5dp"
                 android:text="@string/forgot_password"
                 tools:ignore="RtlHardcoded" />

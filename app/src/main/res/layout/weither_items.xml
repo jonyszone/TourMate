@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView
+<androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_margin="8dp"
@@ -16,7 +16,8 @@
         android:src="@mipmap/ic_launcher"
         android:id="@+id/weatherItemIvId"
         android:layout_width="100dp"
-        android:layout_height="80dp" />
+        android:layout_height="80dp"
+        android:contentDescription="@string/todo" />
 
     <LinearLayout
         android:layout_gravity="center"
@@ -29,14 +30,14 @@
 
             android:id="@+id/dateWeitherItemTvId"
             android:textSize="15sp"
-            android:text="Date"
+            android:text="@string/date"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
         <TextView
 
             android:textSize="15sp"
-            android:text="Discription"
+            android:text="@string/discription"
             android:id="@+id/weitherDiscriptionTvId"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
@@ -52,11 +53,11 @@
 
                 android:id="@+id/tempWeitherItemTvId"
                 android:textSize="15sp"
-                android:text="temp"
+                android:text="@string/temp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <TextView
-                android:layout_marginLeft="20dp"
+                android:layout_marginStart="20dp"
 
                 android:id="@+id/windWeitherItemTvId"
                 android:textSize="15sp"
@@ -72,4 +73,4 @@
 
 
 
-</android.support.v7.widget.CardView>
+</androidx.cardview.widget.CardView>

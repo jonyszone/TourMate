@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     app:cardBackgroundColor="#F59094"
     android:layout_margin="8dp"
     android:layout_width="match_parent"
@@ -37,16 +38,16 @@
                     android:id="@+id/trip_name_id"/>
 
                 <TextView
-                    android:layout_marginTop="10dp"
-                    android:layout_gravity="center"
+                    android:id="@+id/trip_From_date"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/from_date"
-                    android:drawableTint="@color/white"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
                     android:drawableStart="@drawable/datecalender"
-                    android:textSize="18sp"
-                    android:textColor="@color/white"
-                    android:id="@+id/trip_From_date"/>
+                    android:drawableTint="@color/white"
+                    android:text="@string/from_date"
+                    android:textColor="#000000"
+                    android:textSize="18sp" />
 
                 <!--<TextView-->
                     <!--android:layout_width="match_parent"-->
@@ -62,21 +63,22 @@
 
 
             <LinearLayout
-                android:layout_marginRight="5dp"
+                android:layout_marginEnd="5dp"
                 android:layout_gravity="center"
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <TextView
-                    android:gravity="right"
-                    android:layout_gravity="center"
+                    android:id="@+id/trip_day_left"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Day left"
+                    android:layout_gravity="center"
+                    android:gravity="right"
+                    android:text="@string/day_left"
+                    android:textColor="#000000"
                     android:textSize="18sp"
-                    android:textColor="@color/white"
-                    android:id="@+id/trip_day_left"/>
+                    tools:ignore="RtlHardcoded" />
 
             </LinearLayout>
 
@@ -110,39 +112,40 @@
                 android:orientation="horizontal"
                 android:weightSum="3"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                tools:ignore="UselessParent">
 
 
                 <TextView
                     android:id="@+id/memoriesTvClickId"
-                    android:textColor="@color/mainColor"
-                    android:gravity="center"
-                    android:layout_weight="1"
-                    android:text="Memories"
-                    android:textSize="18sp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
-                <TextView
-                    android:id="@+id/walletTvClickId"
-                    android:textColor="@color/mainColor"
-                    android:gravity="center"
-                    android:padding="5dp"
-                    android:layout_weight="1"
-                    android:text="Wallet"
-                    android:textSize="18sp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
-                <TextView
-                    android:id="@+id/detailsEventTvClickId"
-                    android:textColor="@color/mainColor"
-                    android:gravity="center"
-                    android:textSize="18sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Details" />
+                    android:gravity="center"
+                    android:text="@string/memories"
+                    android:textColor="#0277BD"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/walletTvClickId"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:text="@string/wallet"
+                    android:textColor="#0277BD"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/detailsEventTvClickId"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="@string/details"
+                    android:textColor="#0277BD"
+                    android:textSize="18sp" />
 
                 <ImageView
                    android:id="@+id/popupTripBtnIvId"
@@ -150,7 +153,8 @@
                     android:tint="@color/blue1"
                     android:src="@drawable/popup"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent" />
+                    android:layout_height="match_parent"
+                    android:contentDescription="@string/todo" />
 
             </LinearLayout>
 

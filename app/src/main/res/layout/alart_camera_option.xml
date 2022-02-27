@@ -13,14 +13,16 @@
         android:src="@drawable/camera_icon"
         android:layout_margin="20dp"
         android:layout_width="100dp"
-        android:layout_height="100dp" />
+        android:layout_height="100dp"
+        android:contentDescription="@string/todo" />
 
     <ImageView
         android:id="@+id/galleryIvID"
         android:src="@drawable/galary"
         android:layout_margin="20dp"
         android:layout_width="100dp"
-        android:layout_height="100dp" />
+        android:layout_height="100dp"
+        android:contentDescription="@string/todo" />
 
 
 

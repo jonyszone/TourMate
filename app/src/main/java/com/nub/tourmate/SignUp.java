@@ -3,14 +3,15 @@ package com.nub.tourmate;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
-import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -22,17 +23,17 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
-import com.nub.tourmate.R;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Objects;
 
 public class SignUp extends AppCompatActivity {
 
-    private String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+    private final String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
 
     private EditText emailEt, passwordEt, confirmpassEt, fnameET, lnameEt;
     private Button signUp;
@@ -101,13 +102,10 @@ public class SignUp extends AppCompatActivity {
                 if (firstName.equals("") || lastName.equals("") || email.equals("") || password.equals("") || confirmPassword.equals("")) {
 
                     Toast.makeText(SignUp.this, "All the fields are required", Toast.LENGTH_SHORT).show();
-                    return;
                 } else if (password.length() < 6) {
                     Toast.makeText(SignUp.this, "password would be upto 6 charecter", Toast.LENGTH_SHORT).show();
-                    return;
                 } else if (ImageUri == null) {
                     Toast.makeText(SignUp.this, "Please select an Image", Toast.LENGTH_SHORT).show();
-                    return;
                 }
 
                 else if (emailEt.getText().toString().trim().matches(emailPattern)) {
@@ -126,14 +124,11 @@ public class SignUp extends AppCompatActivity {
                             public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
                                 if (task.isSuccessful()) {
 
-                                    Task<Uri> result = task.getResult().getMetadata().getReference().getDownloadUrl();
-                                    result.addOnSuccessListener(new OnSuccessListener<Uri>() {
-                                        @Override
-                                        public void onSuccess(Uri uri) {
-                                            downloadurl = uri.toString();
-                                            signUpWithEmailAndPassword(firstName, lastName, email, password, downloadurl);
-                                            // savingPostInformationtoDatabase(new MemoryClass(mdesc, mtitle, downloadurl, savecurrentdate, savecurrenttime));
-                                        }
+                                    Task<Uri> result = Objects.requireNonNull(task.getResult()).getMetadata().getReference().getDownloadUrl();
+                                    result.addOnSuccessListener(uri -> {
+                                        downloadurl = uri.toString();
+                                        signUpWithEmailAndPassword(firstName, lastName, email, password, downloadurl);
+                                        // savingPostInformationtoDatabase(new MemoryClass(mdesc, mtitle, downloadurl, savecurrentdate, savecurrenttime));
                                     });
 
 

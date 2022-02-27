@@ -3,16 +3,17 @@ package com.nub.tourmate.Fragment;
 
 import android.os.Bundle;
 import android.app.ProgressDialog;
-import android.support.annotation.NonNull;
-import android.support.design.widget.FloatingActionButton;
-import android.support.v4.app.Fragment;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -61,6 +62,7 @@ public class MemoryFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_memory, container, false);
 
         // floatingActionButtonMemory = view.findViewById(R.id.fabMemory);
+        assert getArguments() != null;
         eventId = getArguments().getString("message");
 
 

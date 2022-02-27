@@ -33,20 +33,21 @@
             <TextView
                 android:id="@+id/expensePersentageTvId"
                 android:textColor="@color/white"
-                android:text="5%"
-                android:layout_marginLeft="22dp"
-                android:textSize="18dp"
+                android:text="@string/_5"
+                android:layout_marginStart="22dp"
+                android:textSize="18sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <TextView
                 android:id="@+id/budExTvId"
                 android:gravity="right"
                 android:textColor="@color/white"
-                android:text="5%"
+                android:text="@string/_5"
                 android:layout_marginRight="25dp"
-                android:textSize="18dp"
+                android:textSize="18sp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                tools:ignore="RtlHardcoded" />
 
         </LinearLayout>
 
@@ -55,7 +56,7 @@
             android:textColor="@color/white"
             android:textSize="40sp"
             android:layout_gravity="center"
-            android:text="1000 BDT"
+            android:text="@string/_1000_bdt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
@@ -63,7 +64,7 @@
     </LinearLayout>
 
 
-    <android.support.v7.widget.RecyclerView
+    <view class="androidx.appcompat.app.AlertController$RecycleListView"
         android:id="@+id/recyclerviewExpenseId"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -73,18 +74,19 @@
 
         android:layout_marginRight="20dp">
 
-    </android.support.v7.widget.RecyclerView>
+    </view>
 
-    <android.support.design.widget.FloatingActionButton
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/floatingbtnId"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:tint="@color/white"
         android:backgroundTint="@color/mainColor"
-        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginRight="40dp"
+        android:layout_marginEnd="40dp"
         android:layout_marginBottom="40dp"
-        android:src="@drawable/plusicon" />
+        android:src="@drawable/plusicon"
+        android:contentDescription="@string/todo" />
 
 </RelativeLayout>

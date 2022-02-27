@@ -4,11 +4,6 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -16,6 +11,12 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -34,15 +35,13 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class TripAdapter extends RecyclerView.Adapter<TripAdapter.ViewHolder> {
-    private List<IndividualTrip> individualTrips;
+    private final List<IndividualTrip> individualTrips;
     Context context;
 
     Task<Void> database;
     FirebaseDatabase firebaseDatabase;
     private FirebaseAuth firebaseAuth;
     private String currentuser;
-
-    private long fromdateMs;
 
 
     public TripAdapter(List<IndividualTrip> individualTrips, Context context) {
@@ -79,9 +78,9 @@ public class TripAdapter extends RecyclerView.Adapter<TripAdapter.ViewHolder> {
 
         Calendar calendar = Calendar.getInstance();
 
-        int year = calendar.get(calendar.YEAR);
-        int month = calendar.get(calendar.MONTH);
-        int day = calendar.get(calendar.DAY_OF_MONTH);
+        int year = calendar.get(Calendar.YEAR);
+        int month = calendar.get(Calendar.MONTH);
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
         month = month + 1;
         String selectedDate = year + "/" + month + "/" + day + " 23:59:59";
 
@@ -96,10 +95,10 @@ public class TripAdapter extends RecyclerView.Adapter<TripAdapter.ViewHolder> {
             e.printStackTrace();
         }
 
-        fromdateMs = date1.getTime();
+        long fromdateMs = date1.getTime();
 
 
-        if(longfrmDate <= fromdateMs && longToDate>=fromdateMs)
+        if(longfrmDate <= fromdateMs && longToDate>= fromdateMs)
         {
             viewHolder.dayleftTv.setText(" In Tour");
         }
@@ -107,7 +106,7 @@ public class TripAdapter extends RecyclerView.Adapter<TripAdapter.ViewHolder> {
 
        else if (longfrmDate > fromdateMs)
         {
-            long diff =longfrmDate -fromdateMs;
+            long diff =longfrmDate - fromdateMs;
            long days = (int) TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
             //days = days;
             if (days == 0)
@@ -120,7 +119,7 @@ public class TripAdapter extends RecyclerView.Adapter<TripAdapter.ViewHolder> {
 
 
 
-        else if(longToDate<fromdateMs)
+        else if(longToDate< fromdateMs)
         {
             viewHolder.dayleftTv.setTextColor(context.getResources().getColor(R.color.darkRed));
             viewHolder.dayleftTv.setText("Expired");
@@ -319,8 +318,15 @@ public class TripAdapter extends RecyclerView.Adapter<TripAdapter.ViewHolder> {
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        private TextView trip_title, trip_description, fromdate, todate, memoryEvent, walletEvent, detailsEvent,dayleftTv;
-        private ImageView popUpMenuBtn;
+        private final TextView trip_title;
+        private TextView trip_description;
+        private final TextView fromdate;
+        private TextView todate;
+        private final TextView memoryEvent;
+        private final TextView walletEvent;
+        private final TextView detailsEvent;
+        private final TextView dayleftTv;
+        private final ImageView popUpMenuBtn;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);

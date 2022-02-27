@@ -9,7 +9,7 @@
     <TextView
         android:textSize="20sp"
         android:gravity="center"
-        android:text="Add Memory"
+        android:text="@string/add_memory"
         android:textColor="@color/mainColor"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
@@ -18,9 +18,10 @@
         android:layout_gravity="center"
         android:src="@drawable/galary"
         android:layout_width="100dp"
-        android:layout_height="100dp" />
+        android:layout_height="100dp"
+        android:contentDescription="@string/todo" />
 
-    <android.support.design.widget.TextInputLayout
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:theme="@style/AppTheme.NoActionBar"
@@ -30,16 +31,17 @@
         <EditText
 
             android:inputType="textEmailAddress"
-            android:hint="Caption"
+            android:hint="@string/caption"
             android:singleLine="true"
             android:imeOptions="actionNext"
             android:id="@+id/imageCaptionBottomId"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:importantForAutofill="no" />
 
-    </android.support.design.widget.TextInputLayout>
+    </com.google.android.material.textfield.TextInputLayout>
 
-    <android.support.design.widget.TextInputLayout
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:theme="@style/AppTheme.NoActionBar"
@@ -49,21 +51,22 @@
         <EditText
 
             android:inputType="text"
-            android:hint="Description"
+            android:hint="@string/description"
             android:singleLine="true"
             android:imeOptions="actionDone"
             android:id="@+id/imageDescriptionBottomId"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:importantForAutofill="no" />
 
-    </android.support.design.widget.TextInputLayout>
+    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/uploadImageIdbtn"
         android:layout_gravity="center"
         android:textColor="@color/white"
         android:textAllCaps="false"
-        android:text="Upload"
+        android:text="@string/upload"
         android:layout_marginTop="15dp"
         android:background="@drawable/gradient_background"
         android:layout_width="wrap_content"

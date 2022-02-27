@@ -5,22 +5,23 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
-import android.view.View;
-import android.support.design.widget.NavigationView;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+
+import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -31,9 +32,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.nub.tourmate.Fragment.DashBoardFragment;
 import com.nub.tourmate.Fragment.TicketFragment;
 import com.nub.tourmate.MapAction.MapsActivity;
-import com.nub.tourmate.MyActivity.DhakaToursFragmnet;
 import com.nub.tourmate.MyActivity.DivisionFragment;
-import com.nub.tourmate.R;
 import com.squareup.picasso.Picasso;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -44,7 +43,6 @@ public class MainActivity extends AppCompatActivity
 
     private BottomSheet_AddTrip bottomSheet_addTrip;
     private TextView userNameTv;
-    private FirebaseDatabase firebaseDatabase;
     private FirebaseAuth firebaseAuth;
     private String currentuser;
     private DatabaseReference database;
@@ -57,7 +55,7 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        firebaseDatabase = FirebaseDatabase.getInstance();
+        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         firebaseAuth = FirebaseAuth.getInstance();
         currentuser = firebaseAuth.getCurrentUser().getUid();
 
@@ -114,7 +112,7 @@ public class MainActivity extends AppCompatActivity
         DashBoardFragment dashBoardFragment = new DashBoardFragment();
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.frame_layout_id, dashBoardFragment);
+        ((FragmentTransaction) fragmentTransaction).replace(R.id.frame_layout_id, dashBoardFragment);
         fragmentTransaction.commit();
 
     }
@@ -148,9 +146,9 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.action_settings) {
             DashBoardFragment dashBoardFragment = new DashBoardFragment();
             FragmentManager fragmentManager = getSupportFragmentManager();
-            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.frame_layout_id, dashBoardFragment);
-            fragmentTransaction.commit();
+            fragmentManager.beginTransaction()
+            .replace(R.id.frame_layout_id, dashBoardFragment)
+            .commit();
 
             return true;
         }

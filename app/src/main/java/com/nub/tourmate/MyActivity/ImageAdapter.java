@@ -1,15 +1,17 @@
 package com.nub.tourmate.MyActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
-import android.support.annotation.NonNull;
-import android.support.constraint.ConstraintLayout;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.nub.tourmate.R;
 
@@ -36,20 +38,17 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ViewHolders>
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ImageAdapter.ViewHolders viewHolders, final int i) {
+    public void onBindViewHolder(@NonNull ImageAdapter.ViewHolders viewHolders, @SuppressLint("RecyclerView") final int i) {
         viewHolders.imageView.setImageResource(images[i]);
         viewHolders.title.setText(data[i]);
         viewHolders.description.setText(data2[i]);
-        viewHolders.constraintLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(mContext, DetailActivity.class);
-                intent.putExtra("data",data[i]);
-                intent.putExtra("data2",data2[i]);
-                intent.putExtra("image",images[i]);
-                mContext.startActivity(intent);
+        viewHolders.constraintLayout.setOnClickListener(v -> {
+            Intent intent = new Intent(mContext, DetailActivity.class);
+            intent.putExtra("data",data[i]);
+            intent.putExtra("data2",data2[i]);
+            intent.putExtra("image",images[i]);
+            mContext.startActivity(intent);
 
-            }
         });
     }
 

@@ -9,10 +9,10 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <android.support.v7.widget.CardView
+        <androidx.cardview.widget.CardView
             android:id="@+id/weatherCardId"
             android:visibility="gone"
             android:layout_width="match_parent"
@@ -34,7 +34,7 @@
                     android:layout_width="105dp"
                     android:layout_height="120dp"
                     android:scaleType="fitCenter"
-                     />
+                    android:contentDescription="@string/todo" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -92,7 +92,7 @@
                         android:layout_height="wrap_content"
 
                         android:gravity="center"
-                        android:text="No weather data"
+                        android:text="@string/no_weather_data"
                         android:textColor="@android:color/holo_red_dark"
                         android:textSize="30sp"
                         android:textStyle="bold" />
@@ -100,7 +100,7 @@
 
                 </LinearLayout>
             </LinearLayout>
-        </android.support.v7.widget.CardView>
+        </androidx.cardview.widget.CardView>
 
 
         <LinearLayout
@@ -110,7 +110,7 @@
             android:layout_marginRight="3dp"
             android:weightSum="4">
 
-            <android.support.v7.widget.CardView
+            <androidx.cardview.widget.CardView
                 android:id="@+id/nearme_CardViewId"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
@@ -124,12 +124,12 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:gravity="center"
-                    android:text="Near Me"
+                    android:text="@string/near_me"
                     android:textColor="@color/white" />
 
-            </android.support.v7.widget.CardView>
+            </androidx.cardview.widget.CardView>
 
-            <android.support.v7.widget.CardView
+            <androidx.cardview.widget.CardView
                 android:id="@+id/weather_CardViewId"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
@@ -143,14 +143,14 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:gravity="center"
-                    android:text="Weathers"
+                    android:text="@string/weathers"
                     android:textColor="@color/white" />
 
 
-            </android.support.v7.widget.CardView>
+            </androidx.cardview.widget.CardView>
 
 
-            <android.support.v7.widget.CardView
+            <androidx.cardview.widget.CardView
                 android:id="@+id/ticket_CardViewId"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
@@ -165,12 +165,12 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:gravity="center"
-                    android:text="Ticket Booking"
+                    android:text="@string/ticket_booking"
                     android:textColor="@color/white" />
 
-            </android.support.v7.widget.CardView>
+            </androidx.cardview.widget.CardView>
 
-            <android.support.v7.widget.CardView
+            <androidx.cardview.widget.CardView
                 android:id="@+id/allTours_CardViewId"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
@@ -183,14 +183,14 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:gravity="center"
-                    android:text="All Tours"
+                    android:text="@string/all_tours"
                     android:textColor="@color/white" />
 
-            </android.support.v7.widget.CardView>
+            </androidx.cardview.widget.CardView>
         </LinearLayout>
 
 
-        <android.support.v7.widget.CardView
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp">
@@ -224,20 +224,21 @@
                         android:id="@+id/expensePersentageTvId"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="22dp"
-                        android:text="5%"
+                        android:layout_marginStart="22dp"
+                        android:text="@string/_5"
                         android:textColor="@color/white"
-                        android:textSize="18dp" />
+                        android:textSize="18sp" />
 
                     <TextView
                         android:id="@+id/budExTvId"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginRight="25dp"
+                        android:layout_marginEnd="25dp"
                         android:gravity="right"
-                        android:text="5%"
+                        android:text="@string/_5"
                         android:textColor="@color/white"
-                        android:textSize="18dp" />
+                        android:textSize="18sp"
+                        tools:ignore="RtlHardcoded" />
 
                 </LinearLayout>
 
@@ -246,23 +247,23 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="1000 BDT"
+                    android:text="@string/_1000_bdt"
                     android:textColor="@color/white"
                     android:textSize="40sp" />
 
 
             </LinearLayout>
-        </android.support.v7.widget.CardView>
+        </androidx.cardview.widget.CardView>
 
 
-        <android.support.v7.widget.RecyclerView
+        <view class="androidx.appcompat.app.AlertController$RecycleListView"
             android:id="@+id/trip_recycler_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-        </android.support.v7.widget.RecyclerView>
+        </view>
 
-        <android.support.design.widget.FloatingActionButton
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -272,7 +273,9 @@
             android:layout_marginTop="50dp"
             android:backgroundTint="@color/colorAccent"
             android:src="@drawable/plusicon"
-            android:tint="@color/white" />
+            android:tint="@color/white"
+            android:contentDescription="@string/todo"
+            tools:ignore="RtlHardcoded" />
 
     </LinearLayout>
 

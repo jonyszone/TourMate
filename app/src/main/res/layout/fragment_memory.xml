@@ -7,15 +7,15 @@
     tools:context="com.nub.tourmate.Fragment.MemoryFragment">
 
 
-    <android.support.v7.widget.RecyclerView
+    <view class="androidx.appcompat.app.AlertController$RecycleListView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/memoryRecyclerView">
 
-    </android.support.v7.widget.RecyclerView>
+    </view>
 
 
-    <android.support.design.widget.FloatingActionButton
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"
         android:src="@drawable/camera_icon"
         android:tint="@color/white"
@@ -24,7 +24,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_marginBottom="60dp"
-        android:layout_marginRight="20dp"/>
+        android:layout_marginEnd="20dp"
+        android:contentDescription="@string/todo" />
 
 
 </FrameLayout>

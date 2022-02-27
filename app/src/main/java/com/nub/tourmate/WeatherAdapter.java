@@ -2,27 +2,27 @@ package com.nub.tourmate;
 
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.nub.tourmate.R;
-import com.nub.tourmate.Weither.WeatherResult;
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.nub.tourmate.Weather.WeatherResult;
 import com.squareup.picasso.Picasso;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class WeitherAdapter extends RecyclerView.Adapter<WeitherAdapter.ViewGroup> {
+public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.ViewGroup> {
 
     Context context;
     WeatherResult weatherResult;
     private ProgressDialog loadinbar;
 
-    public WeitherAdapter(Context context, WeatherResult weatherResult) {
+    public WeatherAdapter(Context context, WeatherResult weatherResult) {
         this.context = context;
         this.weatherResult = weatherResult;
     }

@@ -96,7 +96,8 @@
                     android:hint="@string/password"
                     android:imeOptions="actionNext"
                     android:inputType="textPassword"
-                    android:singleLine="true" />
+                    android:singleLine="true"
+                    android:importantForAutofill="no" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -109,11 +110,11 @@
 
                 <EditText
                     android:drawableTint="@color/blue"
-                    android:drawableLeft="@drawable/lock"
+                    android:drawableStart="@drawable/lock"
                     android:id="@+id/confirmpasswordSignUpEtId"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Confirm Password"
+                    android:hint="@string/confirm_password"
                     android:imeOptions="actionNext"
                     android:inputType="textPassword"
                     android:singleLine="true"
@@ -127,9 +128,10 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="10dp"
                 android:orientation="horizontal"
-                android:weightSum="2">
+                android:weightSum="2"
+                android:baselineAligned="false">
 
-                <android.support.design.widget.TextInputLayout
+                <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:theme="@style/AppTheme.NoActionBar"
@@ -137,16 +139,18 @@
 
                     <EditText
                         android:drawableTint="@color/mainColor"
-                        android:drawableLeft="@drawable/user"
+                        android:drawableStart="@drawable/user"
                         android:id="@+id/firtnameSignUpEtId"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="First Name"
+                        android:hint="@string/first_name"
                         android:imeOptions="actionNext"
-                        android:singleLine="true" />
-                </android.support.design.widget.TextInputLayout>
+                        android:singleLine="true"
+                        android:importantForAutofill="no"
+                        android:inputType="text" />
+                </com.google.android.material.textfield.TextInputLayout>
 
-                <android.support.design.widget.TextInputLayout
+                <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:theme="@style/AppTheme.NoActionBar"
@@ -156,10 +160,12 @@
                         android:id="@+id/lastnameSignUpEtId"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Last Name"
+                        android:hint="@string/last_name"
                         android:imeOptions="actionDone"
-                        android:singleLine="true" />
-                </android.support.design.widget.TextInputLayout>
+                        android:singleLine="true"
+                        android:autofillHints="no"
+                        android:inputType="text" />
+                </com.google.android.material.textfield.TextInputLayout>
 
 
             </LinearLayout>
@@ -178,7 +184,7 @@
                 android:layout_marginRight="30dp"
                 android:layout_marginBottom="15dp"
                 android:background="@drawable/gradient_background"
-                android:text="Sign Up"
+                android:text="@string/sign_up"
                 android:textAllCaps="false" />
 
         </LinearLayout>

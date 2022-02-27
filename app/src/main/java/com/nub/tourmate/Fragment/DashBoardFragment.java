@@ -6,16 +6,6 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.design.widget.FloatingActionButton;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.CardView;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,10 +15,21 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
+import androidx.core.app.ActivityCompat;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -47,7 +48,7 @@ import com.nub.tourmate.MapAction.MapsActivity;
 import com.nub.tourmate.R;
 import com.nub.tourmate.RetrofitClass;
 import com.nub.tourmate.WeatherActivity;
-import com.nub.tourmate.Weither.WeatherResult;
+import com.nub.tourmate.Weather.WeatherResult;
 
 import com.squareup.picasso.Picasso;
 
@@ -59,6 +60,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -69,7 +71,7 @@ import retrofit2.Response;
  */
 public class DashBoardFragment extends Fragment {
 
-    private TextView currentWeatherDiscription, currentWeathertemp, currentWeatherWind, currentWeatherLocatonTv, currentWeatherHumidity;
+    private TextView currentWeatherDescription, currentWeathered, currentWeatherWind, currentWeatherLocationTv, currentWeatherHumidity;
     private ImageView currentWeatherIcon;
 
     private RecyclerView recyclerView;
@@ -79,9 +81,9 @@ public class DashBoardFragment extends Fragment {
 
     private LinearLayout balanceLayout;
 
-    private double lat = 0;
-    private double lon = 0;
-    private String units = "metric";
+    private final double lat = 0;
+    private final double lon = 0;
+    private final String units = "metric";
     String url;
 
     FusedLocationProviderClient fusedLocationProviderClient;
@@ -104,7 +106,7 @@ public class DashBoardFragment extends Fragment {
     private long fromdateMs;
     private long fromdateMs1;
     private long todateMs;
-    private long todateMss = Long.valueOf("2592000000");
+    private final long todateMss = Long.parseLong("2592000000");
     ////////////////
 
     private TextView fromDateTv, toDateTv;
@@ -132,10 +134,10 @@ public class DashBoardFragment extends Fragment {
     private TextView nearme_cv_Tv;
 
 
-    private NumberFormat nf = new DecimalFormat("##.###");
+    private final NumberFormat nf = new DecimalFormat("##.###");
     //int total;
 
-    private TextView currentBalanceTvId, expensePersentageTv, budExTv;
+    private TextView currentBalanceTvId, expensePercentageTv, budExTv;
 
     ProgressBar progressBar;
 
@@ -181,7 +183,7 @@ public class DashBoardFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 TripFragment tripFragment = new TripFragment();
-                FragmentManager fragmentManager = ((AppCompatActivity) getContext()).getSupportFragmentManager();
+                FragmentManager fragmentManager = ((AppCompatActivity) Objects.requireNonNull(getContext())).getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.frame_layout_id, tripFragment);
                 fragmentTransaction.addToBackStack("dashboard");
@@ -195,7 +197,7 @@ public class DashBoardFragment extends Fragment {
             public void onClick(View v) {
 
                 bottomSheet_addTrip = new BottomSheet_AddTrip();
-                bottomSheet_addTrip.show(getFragmentManager(), "BootmSheet_addtrip");
+                bottomSheet_addTrip.show(getFragmentManager(), "BottomSheet_adder");
 
             }
         });
@@ -257,7 +259,7 @@ public class DashBoardFragment extends Fragment {
 
         currentBalanceTvId = view.findViewById(R.id.currenBalanceDisplayTvId);
 
-        expensePersentageTv = view.findViewById(R.id.expensePersentageTvId);
+        expensePercentageTv = view.findViewById(R.id.expensePersentageTvId);
         budExTv = view.findViewById(R.id.budExTvId);
 
 
@@ -272,30 +274,30 @@ public class DashBoardFragment extends Fragment {
 
         Calendar calendar = Calendar.getInstance();
 
-        int year = calendar.get(calendar.YEAR);
-        int month = calendar.get(calendar.MONTH);
-        int day = calendar.get(calendar.DAY_OF_MONTH);
+        int year = calendar.get(Calendar.YEAR);
+        int month = calendar.get(Calendar.MONTH);
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
         month = month + 1;
 
         String selectedDate = year + "/" + month + "/" + day + " 00:00:00";
 
-        SimpleDateFormat dateandTimeSDF = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        SimpleDateFormat datedTimeSDF = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         SimpleDateFormat dateSDF = new SimpleDateFormat("dd MMM yyyy");
 
         Date date = null;
         try {
-            date = dateandTimeSDF.parse(selectedDate);
+            date = datedTimeSDF.parse(selectedDate);
         } catch (ParseException e) {
             e.printStackTrace();
         }
 
-        fromdateMs = date.getTime();
+        fromdateMs = date != null ? date.getTime() : 0;
         // fromDateTv.setText(dateSDF.format(date));
 
 
-        int year1 = calendar.get(calendar.YEAR);
-        int month1 = calendar.get(calendar.MONTH);
-        int day1 = calendar.get(calendar.DAY_OF_MONTH);
+        int year1 = calendar.get(Calendar.YEAR);
+        int month1 = calendar.get(Calendar.MONTH);
+        int day1 = calendar.get(Calendar.DAY_OF_MONTH);
         month1 = month1 + 1;
         day1 = day1 + 30;
         String selectedtoDate = year1 + "/" + month1 + "/" + day1 + " 23:59:59";
@@ -313,6 +315,7 @@ public class DashBoardFragment extends Fragment {
         }
 
         // long days = (int) TimeUnit.DAYS.convert(2592000000, TimeUnit.MILLISECONDS);
+        assert date1 != null;
         todateMs = date1.getTime();
         // todateMs=todateMs+todateMss;
 
@@ -348,9 +351,9 @@ public class DashBoardFragment extends Fragment {
 
                         Calendar calendar = Calendar.getInstance();
 
-                        int year = calendar.get(calendar.YEAR);
-                        int month = calendar.get(calendar.MONTH);
-                        int day = calendar.get(calendar.DAY_OF_MONTH);
+                        int year = calendar.get(Calendar.YEAR);
+                        int month = calendar.get(Calendar.MONTH);
+                        int day = calendar.get(Calendar.DAY_OF_MONTH);
                         month = month + 1;
                         String selectedDate = year + "/" + month + "/" + day + " 23:59:59";
 
@@ -365,6 +368,7 @@ public class DashBoardFragment extends Fragment {
                             e.printStackTrace();
                         }
 
+                        assert date1 != null;
                         fromdateMs1 = date1.getTime();
 
 
@@ -382,13 +386,13 @@ public class DashBoardFragment extends Fragment {
                     if (filterList.size() == 0) {
                         viewAllTrip();
                         balanceLayout.setVisibility(View.GONE);
-                        triprecyclerView.setVisibility(view.GONE);
+                        triprecyclerView.setVisibility(View.GONE);
                         return;
 
                     } else {
                         filterList.get(0).getTrip_id();
                     }
-                    setEventId(filterList.get(0).getTrip_id().toString());
+                    setEventId(filterList.get(0).getTrip_id());
 ///                    Toast.makeText(getContext(), "testttttt" + eventId, Toast.LENGTH_SHORT).show();
 
 
@@ -455,7 +459,7 @@ public class DashBoardFragment extends Fragment {
                 } else {
                     Toast.makeText(getActivity(), "Empty database", Toast.LENGTH_SHORT).show();
                     balanceLayout.setVisibility(View.GONE);
-                    triprecyclerView.setVisibility(view.GONE);
+                    triprecyclerView.setVisibility(View.GONE);
                 }
             }
 
@@ -472,12 +476,12 @@ public class DashBoardFragment extends Fragment {
 
 
 ///////////////////////////////////////////////////
-        currentWeatherDiscription = view.findViewById(R.id.cityNameCurrentTvId);
+        currentWeatherDescription = view.findViewById(R.id.cityNameCurrentTvId);
         currentWeatherIcon = view.findViewById(R.id.weatherCurrentIconIvId);
-        currentWeathertemp = view.findViewById(R.id.tempCurrentWeitherTvId);
+        currentWeathered = view.findViewById(R.id.tempCurrentWeitherTvId);
         currentWeatherWind = view.findViewById(R.id.windCurrentWeitherTvId);
         currentWeatherHumidity = view.findViewById(R.id.humidityCurrentWeitherTvId);
-        currentWeatherLocatonTv = view.findViewById(R.id.cityStatusCurrentTvId);
+        currentWeatherLocationTv = view.findViewById(R.id.cityStatusCurrentTvId);
 
         weatherResult = new WeatherResult();
         recyclerView = view.findViewById(R.id.weatherRecyclerViewId);
@@ -566,11 +570,11 @@ public class DashBoardFragment extends Fragment {
 
 
                     WeatherResponse weatherResponse = response.body();
-                    currentWeathertemp.setText(String.valueOf(weatherResponse.getMain().getTemp()) + "°C");
-                    currentWeatherLocatonTv.setText(String.valueOf(weatherResponse.getName()));
-                    currentWeatherDiscription.setText(String.valueOf(weatherResponse.getWeather().get(0).getDescription()));
-                    currentWeatherHumidity.setText("Humidity: " + (String.valueOf(weatherResponse.getMain().getHumidity())) + "%");
-                    currentWeatherWind.setText("Wind       : " + (String.valueOf(weatherResponse.getWind().getSpeed())) + "km/h");
+                    currentWeathered.setText(weatherResponse.getMain().getTemp() + "°C");
+                    currentWeatherLocationTv.setText(String.valueOf(weatherResponse.getName()));
+                    currentWeatherDescription.setText(String.valueOf(weatherResponse.getWeather().get(0).getDescription()));
+                    currentWeatherHumidity.setText("Humidity: " + (weatherResponse.getMain().getHumidity()) + "%");
+                    currentWeatherWind.setText("Wind       : " + (weatherResponse.getWind().getSpeed()) + "km/h");
                     Picasso.get().load(new StringBuilder("https://openweathermap.org/img/w/")
                             .append(weatherResponse.getWeather().get(0).getIcon())
                             .append(".png").toString()).into(currentWeatherIcon);
@@ -604,9 +608,9 @@ public class DashBoardFragment extends Fragment {
     private void checkBalance(int total, int bud) {
 
         double consumed2 = (Double.valueOf(expenditure) * 100) / Double.valueOf(budget);
-        expensePersentageTv.setText(String.valueOf(nf.format(consumed2)) + "%");
+        expensePercentageTv.setText(nf.format(consumed2) + "%");
         final int cBalance = bud - total;
-        currentBalanceTvId.setText(String.valueOf(cBalance) + " BDT");
+        currentBalanceTvId.setText(cBalance + " BDT");
 //        totalBudgetTv.setText("Budget: "+bud+" BDT");
 //        totalexpenseTv.setText("Total Expense: "+total+" BDT");
         budExTv.setText(total + "/" + bud);

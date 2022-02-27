@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -14,14 +13,15 @@
         android:layout_width="155dp"
         android:layout_height="131dp"
         android:layout_gravity="center"
-        android:src="@drawable/logo">
+        android:src="@drawable/logo"
+        android:contentDescription="@string/todo">
 
     </ImageView>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Travel with"
+        android:text="@string/travel_with"
         android:textColor="#530303"
         android:layout_gravity="center"
         android:fontFamily="@font/itikaf_font"
@@ -37,7 +37,7 @@
         android:layout_gravity="center"
         android:fontFamily="@font/itikaf_font"
         android:gravity="center"
-        android:text="Tour mate"
+        android:text="@string/tourmate"
         android:textColor="#000000"
         android:textSize="60sp"
         android:textStyle="italic" />

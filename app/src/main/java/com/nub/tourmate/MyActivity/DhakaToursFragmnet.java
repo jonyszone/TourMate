@@ -1,12 +1,13 @@
 package com.nub.tourmate.MyActivity;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.nub.tourmate.R;
 
@@ -14,7 +15,7 @@ public class DhakaToursFragmnet extends Fragment {
 
     private RecyclerView recyclerView;
     String s1[],s2[];
-    int images[] = {R.drawable.ahsan_manzil,R.drawable.karzan_hall};
+    int[] images = {R.drawable.ahsan_manzil,R.drawable.karzan_hall};
     public DhakaToursFragmnet() {
         // Required empty public constructor
     }

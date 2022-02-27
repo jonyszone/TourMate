@@ -3,6 +3,47 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/AndroidProjects/TourMate/app/src/main/res/layout-v23/activity_login.xml" value="0.25" />
+        <entry key="..\:/AndroidProjects/TourMate/app/src/main/res/layout-v23/activity_sign_up.xml" value="0.25" />
+        <entry key="..\:/AndroidProjects/TourMate/app/src/main/res/layout-v23/alartdialog_fotget_password.xml" value="0.25" />
+        <entry key="..\:/AndroidProjects/TourMate/app/src/main/res/layout-v23/all_trip_sample_layout.xml" value="0.25" />
+        <entry key="..\:/AndroidProjects/TourMate/app/src/main/res/layout/activity_detail.xml" value="0.25" />
+        <entry key="..\:/AndroidProjects/TourMate/app/src/main/res/layout/activity_login.xml" value="0.25" />
+        <entry key="..\:/AndroidProjects/TourMate/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/AndroidProjects/TourMate/app/src/main/res/layout/activity_maps.xml" value="0.25" />
+        <entry key="..\:/AndroidProjects/TourMate/app/src/main/res/layout/activity_memory.xml" value="0.25" />
+        <entry key="..\:/AndroidProjects/TourMate/app/src/main/res/layout/activity_sign_up.xml" value="0.25" />
+        <entry key="..\:/AndroidProjects/TourMate/app/src/main/res/layout/activity_splash.xml" value="0.25" />
+        <entry key="..\:/AndroidProjects/TourMate/app/src/main/res/layout/activity_weather.xml" value="0.25" />
+        <entry key="..\:/AndroidProjects/TourMate/app/src/main/res/layout/alart_camera_option.xml" value="0.25" />
+        <entry key="..\:/AndroidProjects/TourMate/app/src/main/res/layout/alart_dialog_details_memories.xml" value="0.25" />
+        <entry key="..\:/AndroidProjects/TourMate/app/src/main/res/layout/alart_dialog_progressbar.xml" value="0.25" />
+        <entry key="..\:/AndroidProjects/TourMate/app/src/main/res/layout/alart_dialog_zoom_image.xml" value="0.25" />
+        <entry key="..\:/AndroidProjects/TourMate/app/src/main/res/layout/alart_signout.xml" value="0.25" />
+        <entry key="..\:/AndroidProjects/TourMate/app/src/main/res/layout/alartdialog_details_event.xml" value="0.25" />
+        <entry key="..\:/AndroidProjects/TourMate/app/src/main/res/layout/alartdialog_fotget_password.xml" value="0.25" />
+        <entry key="..\:/AndroidProjects/TourMate/app/src/main/res/layout/all_trip_sample_layout.xml" value="0.25" />
+        <entry key="..\:/AndroidProjects/TourMate/app/src/main/res/layout/app_bar_main.xml" value="0.25" />
+        <entry key="..\:/AndroidProjects/TourMate/app/src/main/res/layout/bottom_add_expense.xml" value="0.25" />
+        <entry key="..\:/AndroidProjects/TourMate/app/src/main/res/layout/bottom_add_memory.xml" value="0.25" />
+        <entry key="..\:/AndroidProjects/TourMate/app/src/main/res/layout/bottom_add_trip.xml" value="0.25" />
+        <entry key="..\:/AndroidProjects/TourMate/app/src/main/res/layout/content_main.xml" value="0.25" />
+        <entry key="..\:/AndroidProjects/TourMate/app/src/main/res/layout/delete_alartdialog_layout.xml" value="0.25" />
+        <entry key="..\:/AndroidProjects/TourMate/app/src/main/res/layout/dialog_for_memory_wallet.xml" value="0.25" />
+        <entry key="..\:/AndroidProjects/TourMate/app/src/main/res/layout/dialog_time_picker.xml" value="0.25" />
+        <entry key="..\:/AndroidProjects/TourMate/app/src/main/res/layout/fragment_dash_board.xml" value="0.25" />
+        <entry key="..\:/AndroidProjects/TourMate/app/src/main/res/layout/fragment_dhaka_tours.xml" value="0.25" />
+        <entry key="..\:/AndroidProjects/TourMate/app/src/main/res/layout/fragment_division.xml" value="0.25" />
+        <entry key="..\:/AndroidProjects/TourMate/app/src/main/res/layout/fragment_memory.xml" value="0.25" />
+        <entry key="..\:/AndroidProjects/TourMate/app/src/main/res/layout/fragment_ticket.xml" value="0.25" />
+        <entry key="..\:/AndroidProjects/TourMate/app/src/main/res/layout/fragment_trip.xml" value="0.25" />
+        <entry key="..\:/AndroidProjects/TourMate/app/src/main/res/layout/fragment_wallet.xml" value="0.25" />
+        <entry key="..\:/AndroidProjects/TourMate/app/src/main/res/layout/image_show.xml" value="0.25" />
+        <entry key="..\:/AndroidProjects/TourMate/app/src/main/res/layout/memory_item_list.xml" value="0.25" />
+        <entry key="..\:/AndroidProjects/TourMate/app/src/main/res/layout/nav_header_main.xml" value="0.25" />
+        <entry key="..\:/AndroidProjects/TourMate/app/src/main/res/layout/wallet_item_list.xml" value="0.25" />
+        <entry key="..\:/AndroidProjects/TourMate/app/src/main/res/layout/weither_items.xml" value="0.25" />
+        <entry key="..\:/AndroidProjects/TourMate/app/src/main/res/menu/activity_main_drawer.xml" value="0.25" />
         <entry key="..\:/AndroidProjects/TourMate/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.121" />
       </map>
     </option>

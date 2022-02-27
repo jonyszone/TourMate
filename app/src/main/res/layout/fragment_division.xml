@@ -6,7 +6,7 @@
     android:background="@drawable/radius_round"
     tools:context="com.nub.tourmate.MyActivity.DivisionFragment">
 
-    <android.support.v7.widget.CardView
+    <androidx.cardview.widget.CardView
 
         android:id="@+id/cardViewDhaka"
         android:layout_width="wrap_content"
@@ -30,7 +30,8 @@
                 android:layout_width="160dp"
                 android:layout_height="120dp"
                 android:scaleType="centerCrop"
-                android:src="@drawable/dhaka_city" />
+                android:src="@drawable/dhaka_city"
+                android:contentDescription="@string/todo" />
 
             <TextView
                 android:layout_width="66dp"
@@ -38,16 +39,16 @@
                 android:layout_below="@+id/imageView"
                 android:layout_marginStart="50dp"
                 android:layout_marginTop="-24dp"
-                android:text="Dhaka"
+                android:text="@string/dhaka"
                 android:textAllCaps="false"
                 android:textColor="  #e0f5ff"
-                android:textSize="20dp" />
+                android:textSize="20sp" />
 
         </RelativeLayout>
 
-    </android.support.v7.widget.CardView>
+    </androidx.cardview.widget.CardView>
 
-    <android.support.v7.widget.CardView
+    <androidx.cardview.widget.CardView
 
         android:id="@+id/cardViewKhulna"
         android:layout_width="wrap_content"
@@ -70,7 +71,8 @@
                 android:layout_width="160dp"
                 android:layout_height="120dp"
                 android:scaleType="centerCrop"
-                android:src="@drawable/khulna_city" />
+                android:src="@drawable/khulna_city"
+                android:contentDescription="@string/todo" />
 
             <TextView
                 android:layout_width="66dp"
@@ -78,14 +80,14 @@
                 android:layout_below="@+id/khulnaImageView"
                 android:layout_marginStart="50dp"
                 android:layout_marginTop="-24dp"
-                android:text="Khulna"
+                android:text="@string/khulna"
                 android:textAllCaps="false"
                 android:textColor="  #e0f5ff"
-                android:textSize="20dp" />
+                android:textSize="20sp" />
 
         </RelativeLayout>
 
-    </android.support.v7.widget.CardView>
+    </androidx.cardview.widget.CardView>
 
 
 </LinearLayout>

@@ -1,7 +1,7 @@
 package com.nub.tourmate;
 
 import com.nub.tourmate.CurrentWeather.WeatherResponse;
-import com.nub.tourmate.Weither.WeatherResult;
+import com.nub.tourmate.Weather.WeatherResult;
 
 import retrofit2.Call;
 import retrofit2.http.GET;

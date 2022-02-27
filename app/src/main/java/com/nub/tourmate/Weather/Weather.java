@@ -1,4 +1,4 @@
-package com.nub.tourmate.Weither;
+package com.nub.tourmate.Weather;
 
 public class Weather {
 

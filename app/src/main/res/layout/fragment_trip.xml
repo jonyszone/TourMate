@@ -27,13 +27,14 @@
             android:layout_height="wrap_content">
 
             <LinearLayout
-                android:layout_marginLeft="15dp"
+                android:layout_marginStart="15dp"
                 android:orientation="horizontal"
                 android:layout_marginBottom="20dp"
                 android:layout_marginTop="15dp"
                 android:id="@+id/fromDatePickDashboadLayoutId"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                tools:ignore="RelativeOverlap,UseCompoundDrawables">
 
                 <ImageView
                     android:tint="@color/white"
@@ -41,27 +42,29 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="10dp"
-                    android:src="@drawable/datecalender" />
+                    android:src="@drawable/datecalender"
+                    android:contentDescription="@string/todo" />
 
                 <TextView
                     android:id="@+id/fromDateTV"
-                    android:textSize="16dp"
+                    android:textSize="16sp"
                     android:textColor="@color/white"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingTop="11dp"
-                    android:text="Chose from Date" />
+                    android:text="@string/chose_from_date" />
             </LinearLayout>
 
 
             <LinearLayout
                 android:layout_marginTop="15dp"
-                android:layout_marginRight="15dp"
-                android:layout_alignParentRight="true"
+                android:layout_marginEnd="15dp"
+                android:layout_alignParentEnd="true"
                 android:id="@+id/toDatePickDashboardID"
                 android:orientation="horizontal"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                tools:ignore="RelativeOverlap,UseCompoundDrawables">
 
                 <ImageView
                     android:tint="@color/white"
@@ -69,16 +72,17 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="10dp"
-                    android:src="@drawable/datecalender" />
+                    android:src="@drawable/datecalender"
+                    android:contentDescription="@string/todo" />
 
                 <TextView
                     android:id="@+id/toDateTV"
-                    android:textSize="16dp"
+                    android:textSize="16sp"
                     android:textColor="@color/white"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingTop="11dp"
-                    android:text="Chose from Date" />
+                    android:text="@string/chose_from_date" />
 
 
             </LinearLayout>
@@ -98,27 +102,28 @@
 
     </LinearLayout>
 
-    <android.support.v7.widget.RecyclerView
+    <view class="androidx.appcompat.app.AlertController$RecycleListView"
         android:layout_below="@id/linlayID1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/trip_recycler_view">
 
-    </android.support.v7.widget.RecyclerView>
+    </view>
 
 
-    <android.support.design.widget.FloatingActionButton
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"
         android:src="@drawable/plusicon"
         android:tint="@color/white"
-        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:backgroundTint="@color/mainColor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_marginBottom="60dp"
-        android:layout_marginRight="20dp"/>
+        android:layout_marginEnd="20dp"
+        android:contentDescription="@string/todo" />
 
 
 </RelativeLayout>
