@@ -14,7 +14,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -96,7 +95,7 @@ public class SignUp extends AppCompatActivity {
 
                 postrandomname = savecurrentdate + savecurrenttime;
 
-                //signUpWithEmailAndPassword(firstName, lastName, email, password);
+                signUpWithEmailAndPassword(firstName, firstName, lastName, email, password);
 
 
                 if (firstName.equals("") || lastName.equals("") || email.equals("") || password.equals("") || confirmPassword.equals("")) {
@@ -155,6 +154,50 @@ public class SignUp extends AppCompatActivity {
 
     }
 
+    private void signUpWithEmailAndPassword(String name, String firstName, String lastName, String email, String password) {
+
+        final User user = new User(firstName, lastName, email);
+
+        firebaseAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+
+                if (task.isSuccessful()) {
+                    String userId = Objects.requireNonNull(firebaseAuth.getCurrentUser()).getUid();
+                    user.setUserId(userId);
+                    String image = null;
+                    user.setProfilePhoto(image);
+
+                    DatabaseReference databaseReference = firebaseDatabase.getReference().child("UserList").child(userId);
+
+                    databaseReference.setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+
+                            if (task.isSuccessful()) {
+                                emailEt.setText("");
+                                passwordEt.setText("");
+                                confirmpassEt.setText("");
+                                fnameET.setText("");
+                                lnameEt.setText("");
+                                imageView.setVisibility(View.INVISIBLE);
+                                loadinbar.dismiss();
+                                Toast.makeText(SignUp.this, "Sign Up success", Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(SignUp.this, LoginActivity.class);
+                                startActivity(intent);
+                            } else {
+                                Toast.makeText(SignUp.this, "Sign Up not success", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
+
+                }
+
+            }
+        });
+
+    }
+
 
     public byte[] getBytes(InputStream inputStream) throws IOException {
         ByteArrayOutputStream byteBuffer = new ByteArrayOutputStream();
@@ -169,6 +212,7 @@ public class SignUp extends AppCompatActivity {
     }
 
 
+    /*
     private void signUpWithEmailAndPassword(final String firstName, String lastName, String email, final String password, final String image) {
 
         final User user = new User(firstName, lastName, email);
@@ -197,8 +241,8 @@ public class SignUp extends AppCompatActivity {
                                 imageView.setVisibility(View.INVISIBLE);
                                 loadinbar.dismiss();
                                 Toast.makeText(SignUp.this, "Sign Up success", Toast.LENGTH_SHORT).show();
-                                 Intent intent = new Intent(SignUp.this, LoginActivity.class);
-                                 startActivity(intent);
+                                Intent intent = new Intent(SignUp.this, LoginActivity.class);
+                                startActivity(intent);
                             } else {
                                 Toast.makeText(SignUp.this, "Sign Up not success", Toast.LENGTH_SHORT).show();
                             }
@@ -211,7 +255,7 @@ public class SignUp extends AppCompatActivity {
         });
 
 
-    }
+    }  */
 
     private void openGalary() {
         Intent intent = new Intent();

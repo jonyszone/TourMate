@@ -183,7 +183,7 @@ public class DashBoardFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 TripFragment tripFragment = new TripFragment();
-                FragmentManager fragmentManager = ((AppCompatActivity) Objects.requireNonNull(getContext())).getSupportFragmentManager();
+                FragmentManager fragmentManager = ((AppCompatActivity) requireContext()).getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.frame_layout_id, tripFragment);
                 fragmentTransaction.addToBackStack("dashboard");
