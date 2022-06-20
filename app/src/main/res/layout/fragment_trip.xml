@@ -113,17 +113,17 @@
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"
-        android:src="@drawable/plusicon"
-        android:tint="@color/white"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:backgroundTint="@color/mainColor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
         android:layout_gravity="bottom|end"
-        android:layout_marginBottom="60dp"
         android:layout_marginEnd="20dp"
-        android:contentDescription="@string/todo" />
+        android:layout_marginBottom="60dp"
+        android:backgroundTint="@color/mainColor"
+        android:contentDescription="@string/todo"
+        android:src="@drawable/plusicon"
+        android:tint="@color/white" />
 
 
 </RelativeLayout>

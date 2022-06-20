@@ -100,43 +100,27 @@ public class BottomSheet_AddTrip extends BottomSheetDialogFragment {
         //databaseReference = FirebaseDatabase.getInstance().getReference().child("UserList").child(currentuser).child("Events").push();
         //postRef = FirebaseDatabase.getInstance().getReference().child("UserList").child(currentuser).child("Events");
 
-        addtrip.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                triptitle = addTriptitle.getText().toString();
-                tripDescription = addTripDiscription.getText().toString();
-                addTripFromDate = String.valueOf(selectedFromDateinMS);
-                addTripToDate = String.valueOf(selectedToDateinMS);
-                tripStart = addTripStartPlace.getText().toString();
-                tripBudget = addTripBudget.getText().toString();
+        addtrip.setOnClickListener(view1 -> {
+            triptitle = addTriptitle.getText().toString();
+            tripDescription = addTripDiscription.getText().toString();
+            addTripFromDate = String.valueOf(selectedFromDateinMS);
+            addTripToDate = String.valueOf(selectedToDateinMS);
+            tripStart = addTripStartPlace.getText().toString();
+            tripBudget = addTripBudget.getText().toString();
 
-                if (triptitle.equals("")) {
-                    Toast.makeText(getContext(), "Please Enter your Event Title", Toast.LENGTH_SHORT).show();
-                } else if (tripDescription.equals("")) {
-                    Toast.makeText(getContext(), "Please Enter a description for your event", Toast.LENGTH_SHORT).show();
-                } else {
-                    saveToDB(new IndividualTrip(triptitle, tripDescription, addTripFromDate, addTripToDate, tripStart, tripBudget));
-                }
-
+            if (triptitle.equals("")) {
+                Toast.makeText(getContext(), "Please Enter your Event Title", Toast.LENGTH_SHORT).show();
+            } else if (tripDescription.equals("")) {
+                Toast.makeText(getContext(), "Please Enter a description for your event", Toast.LENGTH_SHORT).show();
+            } else {
+                saveToDB(new IndividualTrip(triptitle, tripDescription, addTripFromDate, addTripToDate, tripStart, tripBudget));
             }
+
         });
 
-        datePicker.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        datePicker.setOnClickListener(v -> openDatePicker());
 
-                openDatePicker();
-            }
-        });
-
-        timePicker.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                openToDatePicker();
-
-            }
-        });
+        timePicker.setOnClickListener(v -> openToDatePicker());
 
 
         return view;
@@ -146,9 +130,8 @@ public class BottomSheet_AddTrip extends BottomSheetDialogFragment {
     private void saveToDB(IndividualTrip individualTrip) {
 
 
+        DatabaseReference userDB = firebaseDatabase.getReference().child("UserList").child(currentuser);
         if (eventID != null) {
-
-            DatabaseReference userDB = firebaseDatabase.getReference().child("UserList").child(currentuser);
 
             //String userId = userDB.push().getKey();
             individualTrip.setTrip_id(eventID);
@@ -165,11 +148,11 @@ public class BottomSheet_AddTrip extends BottomSheetDialogFragment {
         }
 
         else {
-            DatabaseReference userDB = firebaseDatabase.getReference().child("UserList").child(currentuser);
 
             String userId = userDB.push().getKey();
             individualTrip.setTrip_id(userId);
 
+            assert userId != null;
             userDB.child("Events").child(userId).child("info").setValue(individualTrip).addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {
@@ -211,9 +194,9 @@ public class BottomSheet_AddTrip extends BottomSheetDialogFragment {
         };
         /////getcurntdate
         Calendar calendar = Calendar.getInstance();
-        int year = calendar.get(calendar.YEAR);
-        int month = calendar.get(calendar.MONTH);
-        int day = calendar.get(calendar.DAY_OF_MONTH);
+        int year = calendar.get(Calendar.YEAR);
+        int month = calendar.get(Calendar.MONTH);
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
 
 
         DatePickerDialog datePickerDialog = new DatePickerDialog(getActivity(), dateSetListener, year, month, day);
@@ -225,33 +208,30 @@ public class BottomSheet_AddTrip extends BottomSheetDialogFragment {
     ///to date///
     private void openToDatePicker() {
 
-        DatePickerDialog.OnDateSetListener dateSetListener = new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+        DatePickerDialog.OnDateSetListener dateSetListener = (view, year, month, dayOfMonth) -> {
 
-                month = month + 1;
-                String selectedDate = year + "/" + month + "/" + dayOfMonth + " 00:00:00";
+            month = month + 1;
+            String selectedDate = year + "/" + month + "/" + dayOfMonth + " 00:00:00";
 
-                SimpleDateFormat dateandTimeSDF = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-                SimpleDateFormat dateSDF = new SimpleDateFormat("dd MMM yyyy");
-                Date date = null;
-                try {
-                    date = dateandTimeSDF.parse(selectedDate);
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
-
-                selectedToDateinMS = date.getTime();
-                toDateTv.setText(dateSDF.format(date));
-
-
+            SimpleDateFormat dateandTimeSDF = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+            SimpleDateFormat dateSDF = new SimpleDateFormat("dd MMM yyyy");
+            Date date = null;
+            try {
+                date = dateandTimeSDF.parse(selectedDate);
+            } catch (ParseException e) {
+                e.printStackTrace();
             }
+
+            selectedToDateinMS = date.getTime();
+            toDateTv.setText(dateSDF.format(date));
+
+
         };
         /////getcurntdate
         Calendar calendar = Calendar.getInstance();
-        int year = calendar.get(calendar.YEAR);
-        int month = calendar.get(calendar.MONTH);
-        int day = calendar.get(calendar.DAY_OF_MONTH);
+        int year = calendar.get(Calendar.YEAR);
+        int month = calendar.get(Calendar.MONTH);
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
 
 
         DatePickerDialog datePickerDialog = new DatePickerDialog(getActivity(), dateSetListener, year, month, day);

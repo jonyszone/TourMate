@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:padding="15dp"
@@ -25,14 +26,15 @@
         android:layout_height="wrap_content">
 
         <EditText
-            android:hint="@string/expense_type"
-            android:singleLine="true"
-            android:imeOptions="actionNext"
             android:id="@+id/expenseTypeIdListEtId"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:hint="@string/expense_type"
+            android:imeOptions="actionNext"
             android:importantForAutofill="no"
-            android:inputType="text" />
+            android:inputType="text"
+            android:singleLine="true"
+            tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -45,27 +47,29 @@
         android:layout_height="wrap_content">
 
         <EditText
-            android:hint="@string/expense_amount"
-            android:singleLine="true"
-            android:inputType="number"
-            android:imeOptions="actionDone"
             android:id="@+id/expenseAmountnListEtId"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:importantForAutofill="no" />
+            android:hint="@string/expense_amount"
+            android:imeOptions="actionDone"
+            android:importantForAutofill="no"
+            android:inputType="number"
+            android:singleLine="true"
+            tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
 
         android:id="@+id/addExensebtnId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="@string/add_expense"
-        android:padding="15dp"
         android:layout_marginTop="10dp"
+        android:background="@drawable/gradient_background"
+        android:padding="15dp"
+        android:text="@string/add_expense"
         android:textAllCaps="false"
         android:textColor="@color/white"
-        android:background="@drawable/gradient_background"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        tools:ignore="DuplicateSpeakableTextCheck" />
 </LinearLayout>

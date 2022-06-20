@@ -1,5 +1,7 @@
 package com.nub.tourmate.Fragment;
 
+import static java.lang.String.valueOf;
+
 import android.Manifest;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -27,7 +29,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
@@ -47,9 +48,8 @@ import com.nub.tourmate.IOpenWeatherMap;
 import com.nub.tourmate.MapAction.MapsActivity;
 import com.nub.tourmate.R;
 import com.nub.tourmate.RetrofitClass;
-import com.nub.tourmate.WeatherActivity;
 import com.nub.tourmate.Weather.WeatherResult;
-
+import com.nub.tourmate.WeatherActivity;
 import com.squareup.picasso.Picasso;
 
 import java.text.DecimalFormat;
@@ -60,7 +60,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-import java.util.Objects;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -74,9 +73,6 @@ public class DashBoardFragment extends Fragment {
     private TextView currentWeatherDescription, currentWeathered, currentWeatherWind, currentWeatherLocationTv, currentWeatherHumidity;
     private ImageView currentWeatherIcon;
 
-    private RecyclerView recyclerView;
-
-    private WeatherResult weatherResult;
     private WeatherResult currentWeatherResult;
 
     private LinearLayout balanceLayout;
@@ -179,54 +175,39 @@ public class DashBoardFragment extends Fragment {
 
         cardView = view.findViewById(R.id.weatherCardId);
 
-        allTripsCv.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                TripFragment tripFragment = new TripFragment();
-                FragmentManager fragmentManager = ((AppCompatActivity) requireContext()).getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.frame_layout_id, tripFragment);
-                fragmentTransaction.addToBackStack("dashboard");
-                fragmentTransaction.commit();
-            }
+        allTripsCv.setOnClickListener(v -> {
+            TripFragment tripFragment = new TripFragment();
+            FragmentManager fragmentManager = ((AppCompatActivity) requireContext()).getSupportFragmentManager();
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.frame_layout_id, tripFragment);
+            fragmentTransaction.addToBackStack("dashboard");
+            fragmentTransaction.commit();
         });
 
 
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        fab.setOnClickListener(v -> {
 
-                bottomSheet_addTrip = new BottomSheet_AddTrip();
-                bottomSheet_addTrip.show(getFragmentManager(), "BottomSheet_adder");
+            bottomSheet_addTrip = new BottomSheet_AddTrip();
+            bottomSheet_addTrip.show(getParentFragmentManager(), "BottomSheet_adder");
 
-            }
         });
 
 
-        weatherCV.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getContext(), WeatherActivity.class);
-                startActivity(intent);
-            }
+        weatherCV.setOnClickListener(v -> {
+            Intent intent = new Intent(getContext(), WeatherActivity.class);
+            startActivity(intent);
         });
-        nearmeCv.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getContext(), MapsActivity.class);
-                startActivity(intent);
-            }
+        nearmeCv.setOnClickListener(v -> {
+            Intent intent = new Intent(getContext(), MapsActivity.class);
+            startActivity(intent);
         });
-        ticketCv.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                TicketFragment ticketFragment = new TicketFragment();
-                FragmentManager fragmentManager = ((AppCompatActivity) getContext()).getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.addToBackStack("dashboard");
-                fragmentTransaction.replace(R.id.frame_layout_id, ticketFragment);
-                fragmentTransaction.commit();
-            }
+        ticketCv.setOnClickListener(v -> {
+            TicketFragment ticketFragment = new TicketFragment();
+            FragmentManager fragmentManager = ((AppCompatActivity) getContext()).getSupportFragmentManager();
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.addToBackStack("dashboard");
+            fragmentTransaction.replace(R.id.frame_layout_id, ticketFragment);
+            fragmentTransaction.commit();
         });
 
 
@@ -410,7 +391,7 @@ public class DashBoardFragment extends Fragment {
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                             if(dataSnapshot.exists())
                             {
-                                budget = Integer.valueOf(dataSnapshot.getValue(IndividualTrip.class).getTrip_Budget());
+                                budget = Integer.parseInt(dataSnapshot.getValue(IndividualTrip.class).getTrip_Budget());
                             }
 
                             //   Toast.makeText(getContext(), "Budget" + budget, Toast.LENGTH_SHORT).show();
@@ -432,7 +413,7 @@ public class DashBoardFragment extends Fragment {
 
                             int total = 0;
                             for (DataSnapshot ds : dataSnapshot.getChildren()) {
-                                int number = Integer.valueOf(ds.getValue(Expense.class).getExpenseAmount());
+                                int number = Integer.parseInt(ds.getValue(Expense.class).getExpenseAmount());
                                 total = total + number;
                             }
 
@@ -483,8 +464,8 @@ public class DashBoardFragment extends Fragment {
         currentWeatherHumidity = view.findViewById(R.id.humidityCurrentWeitherTvId);
         currentWeatherLocationTv = view.findViewById(R.id.cityStatusCurrentTvId);
 
-        weatherResult = new WeatherResult();
-        recyclerView = view.findViewById(R.id.weatherRecyclerViewId);
+        WeatherResult weatherResult = new WeatherResult();
+        RecyclerView recyclerView = view.findViewById(R.id.weatherRecyclerViewId);
         //getLocationPermission();
 /////////////permission///////////
         if (ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
@@ -539,22 +520,7 @@ public class DashBoardFragment extends Fragment {
             return;
         }
         Task<Location> locationTask = fusedLocationProviderClient.getLastLocation();
-        locationTask.addOnCompleteListener(new OnCompleteListener<Location>() {
-            @Override
-            public void onComplete(@NonNull Task<Location> task) {
-                if (task.isSuccessful()) {
-                    Location location = task.getResult();
-                    url = String.format("weather?lat=%f&lon=%f&units=%s&appid=%s", location.getLatitude(), location.getLongitude(), units, getResources().getString(R.string.appid1));
-                    // Toast.makeText(WeatherActivity.this, String.valueOf(location.getLatitude()), Toast.LENGTH_SHORT).show();
-                    loadinbar.setTitle("Loading");
-                    loadinbar.setMessage("Please wait");
-                    loadinbar.show();
-                    loadinbar.setCanceledOnTouchOutside(true);
-                    getWeatherUpdate();
-                }
-
-            }
-        });
+        //locationTask.addOnCompleteListener(this::onComplete);
 
     }
 
@@ -571,8 +537,8 @@ public class DashBoardFragment extends Fragment {
 
                     WeatherResponse weatherResponse = response.body();
                     currentWeathered.setText(weatherResponse.getMain().getTemp() + "°C");
-                    currentWeatherLocationTv.setText(String.valueOf(weatherResponse.getName()));
-                    currentWeatherDescription.setText(String.valueOf(weatherResponse.getWeather().get(0).getDescription()));
+                    currentWeatherLocationTv.setText(valueOf(weatherResponse.getName()));
+                    currentWeatherDescription.setText(valueOf(weatherResponse.getWeather().get(0).getDescription()));
                     currentWeatherHumidity.setText("Humidity: " + (weatherResponse.getMain().getHumidity()) + "%");
                     currentWeatherWind.setText("Wind       : " + (weatherResponse.getWind().getSpeed()) + "km/h");
                     Picasso.get().load(new StringBuilder("https://openweathermap.org/img/w/")
@@ -634,8 +600,8 @@ public class DashBoardFragment extends Fragment {
         if (expenditure >= 0) {
 
             //consumed = (expenditure * 100) / budget;
-            double consumed3 = (Double.valueOf(expenditure) * 100) / Double.valueOf(budget);
-            progressBar.setProgress(Integer.valueOf((int) consumed3));
+            double consumed3 = ((double) expenditure * 100) / (double) budget;
+            progressBar.setProgress((int) consumed3);
 
         } else Toast.makeText(getContext(), "please enter some ammount", Toast.LENGTH_SHORT).show();
     }
@@ -648,4 +614,17 @@ public class DashBoardFragment extends Fragment {
     }
 
 
+    private void onComplete(Task<Location> task) {
+        if (task.isSuccessful()) {
+            Location location = task.getResult();
+            url = String.format("weather?lat=%f&lon=%f&units=%s&appid=%s", location.getLatitude(), location.getLongitude(), units, getResources().getString(R.string.appid1));
+            // Toast.makeText(WeatherActivity.this, String.valueOf(location.getLatitude()), Toast.LENGTH_SHORT).show();
+            loadinbar.setTitle("Loading");
+            loadinbar.setMessage("Please wait");
+            loadinbar.show();
+            loadinbar.setCanceledOnTouchOutside(true);
+            getWeatherUpdate();
+        }
+
+    }
 }

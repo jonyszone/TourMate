@@ -94,6 +94,8 @@
     <string name="discription">Discription</string>
     <string name="temp">temp</string>
     <string name="_50">50</string>
+    <string name="content_description">content description</string>
+    <string name="add_your_name">add your name</string>
 
 
     <string-array name="places__name">

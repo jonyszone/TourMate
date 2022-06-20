@@ -45,7 +45,26 @@
         <entry key="..\:/AndroidProjects/TourMate/app/src/main/res/layout/weither_items.xml" value="0.25" />
         <entry key="..\:/AndroidProjects/TourMate/app/src/main/res/menu/activity_main_drawer.xml" value="0.25" />
         <entry key="..\:/AndroidProjects/TourMate/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.121" />
+        <entry key="..\:/Projects/TourMate/app/src/main/res/drawable/ic_account_balance_wallet_black_24dp.xml" value="0.1195" />
+        <entry key="..\:/Projects/TourMate/app/src/main/res/layout/activity_detail.xml" value="0.25416666666666665" />
+        <entry key="..\:/Projects/TourMate/app/src/main/res/layout/activity_login.xml" value="0.25416666666666665" />
+        <entry key="..\:/Projects/TourMate/app/src/main/res/layout/activity_memory.xml" value="0.25025641025641027" />
+        <entry key="..\:/Projects/TourMate/app/src/main/res/layout/bottom_add_expense.xml" value="0.25416666666666665" />
+        <entry key="..\:/Projects/TourMate/app/src/main/res/layout/bottom_add_trip.xml" value="0.16799999999999998" />
+        <entry key="..\:/Projects/TourMate/app/src/main/res/layout/content_main.xml" value="0.25416666666666665" />
+        <entry key="..\:/Projects/TourMate/app/src/main/res/layout/delete_alartdialog_layout.xml" value="0.25416666666666665" />
+        <entry key="..\:/Projects/TourMate/app/src/main/res/layout/dialog_for_memory_wallet.xml" value="0.25416666666666665" />
+        <entry key="..\:/Projects/TourMate/app/src/main/res/layout/dialog_time_picker.xml" value="0.25416666666666665" />
         <entry key="..\:/Projects/TourMate/app/src/main/res/layout/fragment_dash_board.xml" value="0.21634615384615385" />
+        <entry key="..\:/Projects/TourMate/app/src/main/res/layout/fragment_dhaka_tours.xml" value="0.25416666666666665" />
+        <entry key="..\:/Projects/TourMate/app/src/main/res/layout/fragment_division.xml" value="0.25416666666666665" />
+        <entry key="..\:/Projects/TourMate/app/src/main/res/layout/fragment_memory.xml" value="0.25416666666666665" />
+        <entry key="..\:/Projects/TourMate/app/src/main/res/layout/fragment_ticket.xml" value="0.25416666666666665" />
+        <entry key="..\:/Projects/TourMate/app/src/main/res/layout/fragment_trip.xml" value="0.25416666666666665" />
+        <entry key="..\:/Projects/TourMate/app/src/main/res/layout/fragment_wallet.xml" value="0.25416666666666665" />
+        <entry key="..\:/Projects/TourMate/app/src/main/res/layout/nav_header_main.xml" value="0.25416666666666665" />
+        <entry key="..\:/Projects/TourMate/app/src/main/res/layout/wallet_item_list.xml" value="0.25416666666666665" />
+        <entry key="..\:/Projects/TourMate/app/src/main/res/layout/weither_items.xml" value="0.25416666666666665" />
       </map>
     </option>
   </component>
